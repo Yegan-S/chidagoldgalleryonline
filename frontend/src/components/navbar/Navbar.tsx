@@ -11,6 +11,12 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+} from "@/components/ui/sheet";
+
 
 
 export default function Navbar() {
@@ -53,6 +59,34 @@ export default function Navbar() {
           <Button variant="outline">Login</Button>
           <Button>Sign Up</Button>
         </div>
+
+         {/* Mobile Menu Button */}
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger className="md:hidden">
+            <Menu className="h-6 w-6" />
+          </SheetTrigger>
+
+          {/* Mobile Menu */}
+          <SheetContent side="left">
+            <div className="flex flex-col gap-4 mt-4">
+              {menuLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-lg"
+                  onClick={() => setOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ))}
+
+              <div className="flex flex-col gap-2 mt-4">
+                <Button variant="outline">Login</Button>
+                <Button>Sign Up</Button>
+              </div>
+            </div>
+          </SheetContent>
+        </Sheet>
 
        
       </div>
