@@ -14,7 +14,7 @@
     "Github": {
       "type": "string"
     },
-    "WhatsApp": {
+    "LinkedIn": {
       "type": "string"
     }
   }
