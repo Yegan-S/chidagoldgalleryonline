@@ -1,3 +1,4 @@
+
 export async function getNavLinks(): Promise <
 {
 label: string; url: string; order: number
@@ -16,4 +17,29 @@ label: string; url: string; order: number
     url: item.url,
     order: item.order,
   }));
+}export async function getCategories() {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/categories?sort=order:asc`,
+      { cache: "no-store", headers: { "Content-Type": "application/json" } }
+    );
+
+    if (!res.ok) {
+      console.error("Failed to fetch categories:", res.statusText);
+      return [];
+    }
+
+    const data = await res.json();
+
+    return data.data?.map((item: any) => ({
+      name: item.Name,
+      slug: item.slug,
+      order: item.order,
+    })) || [];
+  } catch (err) {
+    console.error("Error fetching categories:", err);
+    return [];
+  }
 }
+
+
