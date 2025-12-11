@@ -1,5 +1,5 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "footers",
   "info": {
     "singularName": "footer",
@@ -11,10 +11,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Github": {
+    "github": {
       "type": "string"
     },
-    "LinkedIn": {
+    "linkedin": {
       "type": "string"
     }
   }
