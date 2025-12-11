@@ -17,7 +17,9 @@ label: string; url: string; order: number
     url: item.url,
     order: item.order,
   }));
-}export async function getCategories() {
+}
+
+export async function getCategories() {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/categories?sort=order:asc`,
@@ -40,6 +42,24 @@ label: string; url: string; order: number
     console.error("Error fetching categories:", err);
     return [];
   }
+}
+
+
+
+export async function getFooterLinks (){
+
+  const res =  await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/footer`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+      });
+    
+   const data = await res.json();
+
+   return {
+    github: data.data.attributes.github,
+    linkedin: data.data.attributes.linkedin,
+   }
 }
 
 
