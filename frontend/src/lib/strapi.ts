@@ -44,7 +44,7 @@ export async function getCategories() {
   }
 }
 
-
+         {/* Footer single type*/ }
 
 export async function getFooterLinks (){
 
@@ -57,8 +57,8 @@ export async function getFooterLinks (){
    const data = await res.json();
 
    return {
-    github: data.data.attributes.github,
-    linkedin: data.data.attributes.linkedin,
+    github: data.data.github,
+    linkedin: data.data.linkedin,
    }
 }
 
