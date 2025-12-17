@@ -61,5 +61,21 @@ export async function getFooterLinks (){
     linkedin: data.data.linkedin,
    }
 }
+export async function getProductsByCategory(slug: string) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/products?populate=images&filters[category][slug][$eq]=${slug}`,
+    { cache: "no-store" }
+  );
+
+  const json = await res.json();
+
+  return json.data.map((item: any) => ({
+    id: item.id,
+    title: item.title,
+    images: item.images.data.map((img: any) => ({
+      url: img.url,
+    })),
+  }));
+}
 
 
