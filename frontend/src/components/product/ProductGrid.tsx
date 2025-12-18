@@ -5,12 +5,21 @@ import { useQuery } from "@tanstack/react-query";
 import { getProductsByCategory } from "@/lib/strapi";
 
 export default function ProductGrid({ slug }: { slug: string }) {
-  const { data, isLoading } = useQuery({
+  const { 
+    data = [],
+    isLoading,
+    isError,
+   } = useQuery({
     queryKey: ["products", slug],
     queryFn: () => getProductsByCategory(slug),
   });
 
   if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>Failed to laod...</p>;
+
+  if (data.length === 0 ){
+    return <p> No products found.</p>;
+  }
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -18,6 +27,7 @@ export default function ProductGrid({ slug }: { slug: string }) {
         <div key={product.id} className="border rounded-lg p-2">
           <img
             src={process.env.NEXT_PUBLIC_STRAPI_URL + product.images[0].url}
+            alt={product.title}
             className="rounded"
           />
           <p className="mt-2 text-sm">{product.title}</p>

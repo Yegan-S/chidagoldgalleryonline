@@ -1,19 +1,21 @@
 import ProductGrid from "@/components/product/ProductGrid";
 
 type Props = {
-  params: {
+  params: Promise < {
     slug: string;
-  };
+  }>;
 };
 
-export default function ProductCategoryPage({ params }: Props) {
+export default async function ProductCategoryPage({ params }: Props) {
+  const {slug} = await params;
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-semibold capitalize mb-6">
-        {params.slug}
+        {slug}
       </h1>
 
-      <ProductGrid slug={params.slug} />
+      <ProductGrid slug={slug} />
     </div>
   );
 }
