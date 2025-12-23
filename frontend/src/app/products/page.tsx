@@ -9,7 +9,7 @@ export default function ProductsPage(){
 
       <ul className="space-y-2">
         <li><Link href="/products/bangles">Bangles</Link></li>
-        <li><Link href="/products/chains">Chains</Link></li>
+        <li><Link href="/products/chain">Chain</Link></li>
         <li><Link href="/products/rings">Rings</Link></li>
         <li><Link href="/products/earrings">Earrings</Link></li>
       </ul>

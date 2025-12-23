@@ -452,7 +452,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     Name: Schema.Attribute.String;
     order: Schema.Attribute.Integer;
-    products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
+    Products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -524,7 +524,7 @@ export interface ApiNavigationLinkNavigationLink
 export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   collectionName: 'products';
   info: {
-    displayName: 'product';
+    displayName: 'Product';
     pluralName: 'products';
     singularName: 'product';
   };

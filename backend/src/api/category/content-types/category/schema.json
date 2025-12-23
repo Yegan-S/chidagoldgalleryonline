@@ -20,7 +20,7 @@
     "order": {
       "type": "integer"
     },
-    "products": {
+    "Products": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::product.product",
