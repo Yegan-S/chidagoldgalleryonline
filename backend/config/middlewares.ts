@@ -2,7 +2,12 @@ export default [
   'strapi::logger',
   'strapi::errors',
   'strapi::security',
-  'strapi::cors',
+  {
+    name: 'strapi::cors',
+    config: {
+      origin: ['https://deluxe-lollipop-37c598.netlify.app'],
+    },
+  },
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
