@@ -6,7 +6,7 @@ type Props = {
   }>;
 };
 
-export default async function ProductCategoryPage({ params }: Props) {
+export default function ProductCategoryPage({ params }: Props) {
   const {slug} = await params;
 
   return (
