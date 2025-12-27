@@ -6,6 +6,7 @@ export default [
     name: 'strapi::cors',
     config: {
       origin: ['https://deluxe-lollipop-37c598.netlify.app'],
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
     },
   },
   'strapi::poweredBy',
