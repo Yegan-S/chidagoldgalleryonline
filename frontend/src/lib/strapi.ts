@@ -1,3 +1,4 @@
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL!;
 
 export async function getNavLinks(): Promise <
 {
@@ -60,9 +61,12 @@ export async function getFooterLinks (){
     github: data.data.github,
     linkedin: data.data.linkedin,
    }
+
+   {/* Products collection type*/ }
 }
 export async function getProductsByCategory(slug: string) {
   const res = await fetch(
+ 
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/products?populate=*&filters[category][slug][$eq]=${slug}`,
     { cache: "no-store" }
   );
@@ -73,7 +77,7 @@ export async function getProductsByCategory(slug: string) {
     id: item.id,
     title: item.title,
     images: item.images.data.map((img: any) => ({
-      url: img.url,
+      url: `${STRAPI_URL}${img.url}`,
     })),
   }));
 }
